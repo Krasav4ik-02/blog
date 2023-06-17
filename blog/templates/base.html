@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой блог</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .auth-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .auth-buttons a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    h1 {
+      margin: 0;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    article {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    article:last-child {
+      border-bottom: none;
+    }
+    .post-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .post-meta {
+      font-size: 14px;
+      color: #888;
+    }
+    .post-content {
+      margin-top: 10px;
+    }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="list-group-item">
+            User: {{user}}
+        </li>
+        <li class="list-group-item">
+            <a href="{% url 'home'%}">Домашняя страница</a>
+        </li>
+    </ul>
+
+    {% block content %}
+    {% endblock %}
+<header>
+    <h1>Мой блог</h1>
+    <div class="auth-buttons">
+        <a href="/registration">Регистрация</a>
+        <a href="/login">Вход</a>
+    </div>
+</header>
+<main>
+    <article>
+        <h2 class="post-title">Заголовок статьи 1</h2>
+        <p class="post-meta">Автор: Имя автора | Дата: 01.01.2023</p>
+        <div class="post-content">
+            <p>Содержимое статьи 1...</p>
+        </div>
+    </article>
+    <article>
+        <h2 class="post-title">Заголовок статьи 2</h2>
+        <p class="post-meta">Автор: Имя автора | Дата: 02.01.2023</p>
+        <div class="post-content">
+            <p>Содержимое статьи 2...</p>
+        </div>
+    </article>
+    <!-- Добавьте дополнительные статьи здесь -->
+</main>
+</body>
+</html>
