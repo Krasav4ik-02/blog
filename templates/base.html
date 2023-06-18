@@ -58,22 +58,13 @@
     </style>
 </head>
 <body>
-    <ul>
-        <li class="list-group-item">
-            User: {{user}}
-        </li>
-        <li class="list-group-item">
-            <a href="{% url 'home'%}">Домашняя страница</a>
-        </li>
-    </ul>
-
-
 <header>
-    <h1>Мой блог</h1>
+    <h1> <a href="{% url 'home'%}">Мой блог</a></h1>
     {% block content %}
     {% endblock %}
     <div class="auth-buttons">
         {% if user.is_authenticated %}
+            {{user}}
             <a href="{% url 'logout' %}">Выйти</a>
         {% else %}
         <a href="{% url 'login' %}">Войти</a> |
