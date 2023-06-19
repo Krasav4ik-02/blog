@@ -1,10 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
-from post.forms import Post , Comment
-class Post(View):
-    template_name = 'post.html'
 
-    def create_post(self, request):
-        form = Post(request.POST)
-        if form.is_valid():
-            return render(request , self.template_name , context)
+from post.forms import Posts , Comment
+
+class Create_post(View):
+    def get(self, request):
+        form = Posts()
+        return render(request, 'posts.html', context={'form': form})
+    def post(self, request):
+        bount_form = Posts(request.POST)
+
+        if bount_form.is_valid():
+            new_post = bount_form.save()
+            return redirect(new_post)
+        return render(request, 'posts.html', context={'form': bount_form})

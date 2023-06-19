@@ -1,15 +1,18 @@
 from django import forms
 from post.models import Post , Comment
 
-class Post(forms.ModelForm):
+
+class Posts(forms.ModelForm):
     class Meta:
         model = Post
-        fields= [
+        fields = [
             'heading_post',
             'content_post',
             'image_post',
-            'like'
+            'like',
+            'account' ,
         ]
+
 
 
 class Comments(forms.ModelForm):
