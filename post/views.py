@@ -10,7 +10,7 @@ class Create_post(View):
         form = Posts()
         return render(request, 'posts.html', context={'form': form})
     def post(self, request):
-        bount_form = Posts(request.POST)
+        bount_form = Posts(request.POST, request.FILES)
 
         if bount_form.is_valid():
             new_post = bount_form.save(commit=False)
@@ -20,5 +20,5 @@ class Create_post(View):
         return render(request, 'posts.html', context={'form': bount_form})
 
 def post_view(request):
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('-date_created_post')
     return render(request, 'post_view.html', {'posts': posts})

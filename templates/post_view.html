@@ -8,7 +8,7 @@
         <h2>{{ post.heading_post }}</h2>
         <p>{{ post.content_post }}</p>
         {% if post.image_post %}
-            <img src="{{ post.image_post.url }}" alt="Изображение поста">
+            <img src="{{ post.image_post.url }}" alt="Изображение поста" width="300" height="200">
         {% endif %}
         <p>Дата создания: {{ post.date_created_post }}</p>
         <p>Автор: {{ post.account.username }}</p>
