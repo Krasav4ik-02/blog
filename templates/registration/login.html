@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
 {% block content %}
-    <h1>Авторизация</h1>
-    <hr>
 
     {% if form.errors %}
         <p>{{ form.errors.error }}</p>
@@ -11,6 +13,6 @@
 <form action="{% url 'login' %}" method="post">
     {{form.as_p}}
     {% csrf_token %}
-    <button type="submit" class="btn btn=primary">Войти</button>
+    <button type="submit" class="btn btn-primary">Войти</button>
 </form>
 {% endblock %}

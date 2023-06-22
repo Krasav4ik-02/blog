@@ -1,6 +1,6 @@
 from django import forms
 from post.models import Post , Comment
-
+from users.models import User
 
 class Posts(forms.ModelForm):
     class Meta:
@@ -10,8 +10,10 @@ class Posts(forms.ModelForm):
             'content_post',
             'image_post',
             'like',
-            'account' ,
+            'account',
         ]
+
+
 
 
 
