@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth import get_user
 from post.forms import Posts , Comment
+from post.models import Post
+
 
 class Create_post(View):
     def get(self, request):
@@ -16,3 +18,7 @@ class Create_post(View):
             new_post.save()
             return render(request, 'home.html')
         return render(request, 'posts.html', context={'form': bount_form})
+
+def post_view(request):
+    posts = Post.objects.all()
+    return render(request, 'post_view.html', {'posts': posts})

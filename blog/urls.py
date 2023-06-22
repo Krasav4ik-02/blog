@@ -9,4 +9,5 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('posts/' , Create_post.as_view() , name = 'posts'),
     path('users/', include('users.urls')),
+    path('post_view/', post_view, name = 'post_view')
 ]

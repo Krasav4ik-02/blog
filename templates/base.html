@@ -81,21 +81,8 @@
         {% block contentpost%}
         {% endblock %}
     {% endif %}
-    <article>
-        <h2 class="post-title">Заголовок статьи 1</h2>
-        <p class="post-meta">Автор: {{user}} | Дата: </p>
-        <div class="post-content">
-            <p>Содержимое статьи 1...</p>
-        </div>
-    </article>
-    <article>
-        <h2 class="post-title">Заголовок статьи 2</h2>
-        <p class="post-meta">Автор: Имя автора | Дата: 02.01.2023</p>
-        <div class="post-content">
-            <p>Содержимое статьи 2...</p>
-        </div>
-    </article>
-    <!-- Добавьте дополнительные статьи здесь -->
+        {% block contentview %}
+        {% endblock %}
 </main>
 </body>
 </html>
