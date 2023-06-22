@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block contentview %}
+    <form action="{% url 'post_view' %}" method="get">
+        {% csrf_token %}
+    <h1>Список постов</h1>
+    {% for post in posts %}
+        <h2>{{ post.heading_post }}</h2>
+        <p>{{ post.content_post }}</p>
+        {% if post.image_post %}
+            <img src="{{ post.image_post.url }}" alt="Изображение поста">
+        {% endif %}
+        <p>Дата создания: {{ post.date_created_post }}</p>
+        <p>Автор: {{ post.account.username }}</p>
+        <p>Лайки: {{ post.like }}</p>
+    {% endfor %}
+</form>
+
+{% endblock %}
