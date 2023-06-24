@@ -1,18 +1,29 @@
 {% extends 'base.html' %}
 
 {% block contentview %}
-    <form action="{% url 'post_view' %}" method="get">
+<form action="{% url 'post_view' %}" method="get">
         {% csrf_token %}
-    <h1>Список постов</h1>
+    <h1>Список постов</h1><br>
     {% for post in posts %}
-        <h2>{{ post.heading_post }}</h2>
-        <p>{{ post.content_post }}</p>
+        <h2 class="font-monospace">{{ post.heading_post }}</h2>
+        <p class="font-monospace">{{ post.content_post }}</p>
         {% if post.image_post %}
-            <img src="{{ post.image_post.url }}" alt="Изображение поста" width="300" height="200">
+            <img src="{{ post.image_post.url }}" alt="Изображение поста" width="400" height="200">
         {% endif %}
         <p>Дата создания: {{ post.date_created_post }}</p>
         <p>Автор: {{ post.account.username }}</p>
         <p>Лайки: {{ post.like }}</p>
+           <a href="{% url 'add_comment' post.id %}">Добавить комментарий</a>
+            <h3>Комментарии:</h3>
+        {% for comment in post.comment_set.all %}
+            <p>{{ comment.content_comment }}</p>
+            <p>Автор: {{ comment.account.username }}</p>
+            <p>Дата создания: {{ comment.date_created_comment }}</p>
+        {% empty %}
+            <p>Комментариев пока нет.</p>
+        {% endfor %}
+
+        <hr>
     {% endfor %}
 </form>
 
